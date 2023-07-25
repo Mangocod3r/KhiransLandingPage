@@ -1,0 +1,7 @@
+{
+  "name": "khiranslandingpage",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "custom"
+}

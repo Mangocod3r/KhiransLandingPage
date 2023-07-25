@@ -1,67 +1,28 @@
-import React, { useState } from 'react';
-import { View, StyleSheet, TextInput } from 'react-native';
-import { Button, Text } from 'react-native-paper';
-import { LinearGradient } from 'expo-linear-gradient';
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import HomeScreen from './pages/HomeScreen';
+import DetailsScreen from './pages/DetailsScreen';
+import FarmerEngagement from './pages/FarmerEngagement';
+import FoodCategories from './pages/FoodCategories';
+import VideoContent from './pages/VideoContent';
+// Import other section components here
+
+const Stack = createStackNavigator();
 
 const App = () => {
-  const [email, setEmail] = useState('');
-
-  const handleEmailChange = (text) => {
-    setEmail(text);
-  };
-
-  const handleSubscribe = () => {
-    // Implement your email capturing logic here
-    console.log('User subscribed with email:', email);
-    // Reset the email input field after capturing
-    setEmail('');
-  };
-
   return (
-    <View style={styles.container}>
-      <LinearGradient colors={['#4B0082', '#0000FF']} style={styles.gradient}>
-        <Text style={styles.title}>Khirans Landing Page</Text>
-        <TextInput
-          style={styles.input}
-          placeholder="Enter your email"
-          value={email}
-          onChangeText={handleEmailChange}
-        />
-        <Button mode="contained" onPress={handleSubscribe}>
-          Subscribe
-        </Button>
-      </LinearGradient>
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Home">
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Details" component={DetailsScreen} />
+        <Stack.Screen name="FarmerEngagement" component={FarmerEngagement} />
+        <Stack.Screen name="FoodCategories" component={FoodCategories} />
+        <Stack.Screen name="VideoContent" component={VideoContent} />
+        {/* Add other section screens here */}
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  gradient: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: '100%',
-    padding: 16,
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    color: '#FFFFFF',
-    marginBottom: 16,
-  },
-  input: {
-    width: '100%',
-    height: 40,
-    backgroundColor: '#FFFFFF',
-    borderRadius: 8,
-    paddingHorizontal: 16,
-    marginBottom: 16,
-  },
-});
 
 export default App;

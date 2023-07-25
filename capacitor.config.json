@@ -1,0 +1,8 @@
+{
+  "appId": "com.khiranslandingpage",
+  "appName": "khiranslandingpage",
+  "webDir": "build",
+  "server": {
+    "androidScheme": "https"
+  }
+}
